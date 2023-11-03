@@ -52,6 +52,14 @@
     <meta property="og:description" content="{{ getSetting('global_meta_description') }}" />
     <meta property="og:site_name" content="{{ env('APP_NAME') }}" /> 
     <meta property="fb:app_id" content="{{ env('FACEBOOK_PIXEL_ID') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+<style>
+    *{
+        font-family: 'Rubik', sans-serif;
+    }
+</style>
 @endif
 
     <!-- head-scripts -->
