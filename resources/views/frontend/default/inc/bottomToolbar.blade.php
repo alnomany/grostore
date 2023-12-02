@@ -43,6 +43,36 @@
             </span>
             <span class="mobile-toolbar-label">{{ localize('Account') }}</span>
         </a>
+        
+        @php
+        if (Session::has('locale')) {
+            $locale = Session::get('locale', Config::get('app.locale'));
+        } else {
+            $locale = env('DEFAULT_LANGUAGE');
+        }
+        $currentLanguage = \App\Models\Language::where('code', $locale)->first();
+    @endphp
+
+    <li class="nav-item dropdown tt-language-dropdown">
+        <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="true">
+            <img src="{{ staticAsset('backend/assets/img/flags/' . $currentLanguage->flag . '.png') }}"
+                alt="country" class="img-fluid me-1"> {{ $currentLanguage->name }}
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" data-popper-placement="bottom-end">
+
+            @foreach (\App\Models\Language::where('is_active', 1)->get() as $key => $language)
+                <li>
+                    <a class="dropdown-item" href="javascript:void(0);"
+                        onclick="changeLocaleLanguage(this)" data-flag="{{ $language->code }}">
+                        <img src="{{ staticAsset('backend/assets/img/flags/' . $language->flag . '.png') }}"
+                            alt="country" class="img-fluid me-1">
+                        {{ $language->name }}
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+    </li>
         <a class="d-table-cell mobile-toolbar-item" href="{{ route('carts.index') }}">
 
             @php
