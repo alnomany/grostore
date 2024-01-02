@@ -70,6 +70,7 @@
         @php
             $isVariantProduct = 0;
             $stock = 0;
+            //issue with product and varations
             if ($product->variations()->count() > 1) {
                 $isVariantProduct = 1;
             } else {

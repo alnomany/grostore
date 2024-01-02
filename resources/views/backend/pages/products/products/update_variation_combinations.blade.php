@@ -9,6 +9,9 @@
                     <label for="" class="control-label">{{ localize('Price') }}</label>
                 </th>
                 <th data-breakpoints="xs sm">
+                    <label for="" class="control-label">{{ localize('Before price') }}</label>
+                </th>
+                <th data-breakpoints="xs sm">
                     <label for="" class="control-label">{{ localize('Stock') }} <small
                             class="text-warning">({{ localize('Default Location') }})</small></label>
                 </th>
@@ -51,6 +54,10 @@
                     <td>
                         <input type="number" step="0.01" name="variations[{{ $key }}][price]"
                             min="0" class="form-control" value="{{ $variation->price }}" required>
+                    </td>
+                    <td>
+                        <input type="number" step="0.01" name="variations[{{ $key }}][beforeprice]"
+                            min="0" class="form-control" value="{{ $variation->before_price }}" required>
                     </td>
                     <td>
                         <input type="number" name="variations[{{ $key }}][stock]"

@@ -195,6 +195,7 @@
                             <div class="row g-4">
                                 @if (count($products) > 0)
                                     @if (request()->has('view') && request()->view == 'list')
+                                    
                                         @foreach ($products as $product)
                                             <div class="col-xl-12">
                                                 @include(
@@ -208,9 +209,7 @@
                                     @else
                                         @foreach ($products as $product)
                                             <div class="col-lg-4 col-md-6 col-sm-10">
-                                                @include(
-                                                    'frontend.default.pages.partials.products.vertical-product-card',
-                                                    [
+                                                @include('frontend.default.pages.partials.products.vertical-product-card',[
                                                         'product' => $product,
                                                         'bgClass' => 'bg-white',
                                                     ]

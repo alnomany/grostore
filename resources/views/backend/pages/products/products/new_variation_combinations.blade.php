@@ -10,6 +10,9 @@
                         <label for="" class="control-label">{{ localize('Price') }}</label>
                     </th>
                     <th data-breakpoints="xs sm">
+                        <label for="" class="control-label">{{ localize('Before Price') }}</label>
+                    </th>
+                    <th data-breakpoints="xs sm">
                         <label for="" class="control-label">{{ localize('Stock') }} <small
                                 class="text-warning">({{ localize('Default Location') }})</small></label>
                     </th>
@@ -23,6 +26,7 @@
             </thead>
 
             <tbody>
+              
                 @foreach ($combinations as $key => $combination)
                     @php
                         $name = '';
@@ -50,6 +54,10 @@
                         </td>
                         <td>
                             <input type="number" step="0.01" name="variations[{{ $key }}][price]"
+                                value="0" min="0" class="form-control" required>
+                        </td>
+                     <td>
+                            <input type="number" step="0.01" name="variations[{{ $key }}][beforeprice]"
                                 value="0" min="0" class="form-control" required>
                         </td>
                         <td>

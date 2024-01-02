@@ -20,6 +20,8 @@
             $("#stock").removeAttr('required', true);
             $("#sku").removeAttr('required', true);
             $("#code").removeAttr('required', true);
+            $("#beforeprice").removeAttr('required', true);
+
 
         } else {
             $(".noVariation").show();
@@ -29,6 +31,8 @@
             $("#stock").attr('required', true);
             $("#sku").attr('required', true);
             $("#code").attr('required', true);
+            $("#beforeprice").attr('required', true);
+
         }
     }
 

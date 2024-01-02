@@ -172,6 +172,8 @@ class ProductsController extends Controller
         } else {
             $product->min_price =  priceToUsd($request->price);
             $product->max_price =  priceToUsd($request->price);
+            $product->before_price =  priceToUsd($request->beforeprice);
+
         }
 
         # discount
@@ -242,6 +244,9 @@ class ProductsController extends Controller
                 $product_variation->product_id  = $product->id;
                 $product_variation->variation_key        = $variation['variation_key'];
                 $product_variation->price       = priceToUsd($variation['price']);
+                $product_variation->before_price       = priceToUsd($variation['beforeprice']);
+
+
                 $product_variation->sku         = $variation['sku'];
                 $product_variation->code         = $variation['code'];
                 $product_variation->save();
@@ -267,6 +272,8 @@ class ProductsController extends Controller
             $variation->sku         = $request->sku;
             $variation->code         = $request->code;
             $variation->price       = priceToUsd($request->price);
+         //  $variation->before_price       = priceToUsd($request->price);
+
             $variation->save();
             $product_variation_stock                          = new ProductVariationStock;
             $product_variation_stock->product_variation_id    = $variation->id;
@@ -336,9 +343,13 @@ class ProductsController extends Controller
             if ($request->has('is_variant') && $request->has('variations')) {
                 $product->min_price =  priceToUsd(min(array_column($request->variations, 'price')));
                 $product->max_price =  priceToUsd(max(array_column($request->variations, 'price')));
+                $product->before_price =  priceToUsd(max(array_column($request->variations, 'beforeprice')));
+
             } else {
                 $product->min_price =  priceToUsd($request->price);
                 $product->max_price =  priceToUsd($request->price);
+                $product->before_price =  priceToUsd($request->beforeprice);
+
             }
 
             # discount
@@ -421,6 +432,8 @@ class ProductsController extends Controller
                 foreach ($old_matched_variations as $variation) {
                     $p_variation              = ProductVariation::where('product_id', $product->id)->where('variation_key', $variation['variation_key'])->first();
                     $p_variation->price       = priceToUsd($variation['price']);
+                    $p_variation->before_price       = priceToUsd($variation['beforeprice']);
+
                     $p_variation->sku         = $variation['sku'];
                     $p_variation->code         = $variation['code'];
                     $p_variation->save();
@@ -442,6 +455,9 @@ class ProductsController extends Controller
                     $product_variation->product_id          = $product->id;
                     $product_variation->variation_key       = $variation['variation_key'];
                     $product_variation->price               = priceToUsd($variation['price']);
+                    $product_variation->before_price               = priceToUsd($variation['beforeprice']);
+
+
                     $product_variation->sku                 = $variation['sku'];
                     $product_variation->code                 = $variation['code'];
                     $product_variation->save();
@@ -477,6 +493,8 @@ class ProductsController extends Controller
                 $variation->sku                  = $request->sku;
                 $variation->code                  = $request->code;
                 $variation->price                = priceToUsd($request->price);
+                $variation->before_price                = priceToUsd($request->beforeprice);
+
                 $variation->save();
 
 

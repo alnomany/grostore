@@ -195,10 +195,17 @@
                                 <div class="noVariation">
                                     <div class="row g-3">
                                         <div class="col-lg-3">
-                                            <div class="mb-3">
+                                            <!-- before price -->
+                                            <div class="mb-2">
                                                 <label for="price" class="form-label">{{ localize('Price') }}</label>
                                                 <input type="number" min="0" step="0.0001" id="price"
                                                     name="price" placeholder="{{ localize('Product price') }}"
+                                                    class="form-control" required>
+                                            </div>
+                                            <div class="mb-2">
+                                                <label for="beforeprice" class="form-label">{{ localize('Before price') }}</label>
+                                                <input type="number" min="0" step="0.0001" id="beforeprice"
+                                                    name="beforeprice" placeholder="{{ localize('Before price') }}"
                                                     class="form-control" required>
                                             </div>
                                         </div>

@@ -68,7 +68,7 @@ class ProductController extends Controller
         # conditional
 
         $products = $products->paginate(paginationNumber($per_page));
-
+  
         $tags = Tag::all();
         return getView('pages.products.index', [
             'products'      => $products,

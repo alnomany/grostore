@@ -28,6 +28,7 @@ class CreateProductsTable extends Migration
             $table->longText('description')->nullable();
             $table->double('min_price')->default(0.00);
             $table->double('max_price')->default(0.00);
+            
             $table->double('discount_value')->default(0.00);
             $table->string('discount_type')->nullable();
             $table->integer('discount_start_date')->nullable();

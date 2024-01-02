@@ -248,6 +248,8 @@
                                         @php
                                             $first_variation = $product->variations->first();
                                             $price = !$product->has_variation ? $first_variation->price : 0;
+                                            $before_price = !$product->has_variation ? $first_variation->before_price : 0;
+
                                             $stock_qty = !$product->has_variation ? ($first_variation->product_variation_stock ? $first_variation->product_variation_stock->stock_qty : 0) : 1;
                                             $sku = !$product->has_variation ? $first_variation->sku : null;
                                             $code = !$product->has_variation ? $first_variation->code : null;
@@ -255,12 +257,21 @@
 
                                         <div class="row g-3">
                                             <div class="col-lg-3">
-                                                <div class="mb-3">
+                                                <div class="mb-2">
                                                     <label for="price"
                                                         class="form-label">{{ localize('Price') }}</label>
                                                     <input type="number" min="0" step="0.0001" id="price"
                                                         name="price" placeholder="{{ localize('Product price') }}"
                                                         class="form-control" value="{{ $price }}"
+                                                        {{ !$product->has_variation ? 'required' : '' }}>
+                                                </div>
+                                                <!-- before price-->
+                                                <div class="mb-2">
+                                                    <label for="price"
+                                                        class="form-label">{{ localize('Before price') }}</label>
+                                                    <input type="number" min="0" step="0.0001" id="beforeprice"
+                                                        name="beforeprice" placeholder="{{ localize('Before price') }}"
+                                                        class="form-control" value="{{ $before_price }}"
                                                         {{ !$product->has_variation ? 'required' : '' }}>
                                                 </div>
                                             </div>
