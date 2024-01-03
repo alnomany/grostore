@@ -527,7 +527,7 @@
                                     </div>
                                     <div class="ms-3">
                                         <h4 class="mb-1">{{ formatPrice($totalEarning) }}</h4>
-                                        <span class="text-muted">{{ localize('Totals Earning') }}</span>
+                                        <span class="text-muted">{{ localize('Total Earning') }}</span>
                                     </div>
                                 </div>
                             </div>
