@@ -150,7 +150,7 @@ class LanguageController extends Controller
     {
         $searchKey = null;
         $language = Language::findOrFail($id);
-        $localizations = Localization::where('lang_key', 'en');
+      return  $localizations = Localization::where('lang_key', 'en');
         if ($request->has('search')) {
             $searchKey = $request->search;
             $localizations = $localizations->where('t_value', 'like', '%' . $searchKey . '%');
